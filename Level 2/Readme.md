@@ -1,1 +1,1 @@
-Chapter on definitions, memory allocation, structures, and basic pointers. 
+Chapter on Macros/Definitions, Memory Allocation, Structures, and basic Pointers. 
