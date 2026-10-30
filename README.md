@@ -59,8 +59,8 @@ Applying the fundamentals to quantitative finance:
 ### Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/enriquecalixto49-droid/CPP_FFE.git
+cd CPP_FFE.git
 ```
 
 ### Build and run a single file
@@ -100,20 +100,18 @@ double call = BlackScholes::call(S, K, r, sigma, T);
 
 ## Roadmap
 
-- [ ] Basics: classes and inheritance
-- [ ] Basics: templates and STL
-- [ ] Option Pricing: Black-Scholes and Greeks
+- [ ] Basics: very basics and OOP
+- [ ] Basics: templates, STL & Boost 
+- [ ] Option Pricing: Black-Scholes & Greeks
 - [ ] Option Pricing: binomial trees
 - [ ] Option Pricing: Monte Carlo
 - [ ] Option Pricing: finite difference methods
-- [ ] Unit tests and benchmarks
 
 ---
 
 ## Notes
 
 - Code follows the course exercises but is written and organized by me.
-- Numerical results are for learning purposes and are **not financial advice**.
 
 ## References
 
