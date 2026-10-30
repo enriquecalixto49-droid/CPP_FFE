@@ -1,27 +1,42 @@
 // Implementation of the Line class
-#include "The_class_concept.hpp"
+#include "Line.hpp"
+#include "Shape.hpp"
 #include <sstream>
 using namespace std; 
 
 // Default constructor initializes p_start and p_end to (0,0)
-Line::Line(): p_start(0,0), p_end(0,0){
+Line::Line(): Shape(), p_start(), p_end(){
 	cout << "Default constructor called" << endl;
 }
 
 // Constructor with parameters initializes p_start and p_end using the provided Point objects.
 // p_start(p1) calls Point's copy constructor. Thus, no need to put the coordinates
-Line::Line(const Point& p1, const Point& p2): p_start(p1), p_end(p2){
+Line::Line(int id, const Point& p1, const Point& p2): Shape(id), p_start(p1), p_end(p2){
 	cout << "Constructor with parameters called" << endl;
 }
 
 // Copy constructor initializes p_start and p_end using the provided Line object's points.
-Line::Line(const Line& l): p_start(l.p_start),  p_end(l.p_end){
+Line::Line(const Line& l): Shape(l), p_start(l.p_start),  p_end(l.p_end){
 	cout << "Copy constructor called" << endl;
 }
 
 // Destructor
 Line::~Line(){
-	cout << "Destructor called" << endl;
+	cout << "Destructor from Line called" << endl;
+}
+
+// Assigment operator
+Line& Line::operator=(const Line& source) {
+    Shape::operator=(source);
+    p_start = source.p_start;
+	p_end = source.p_end;
+    return *this;
+}
+
+// ostream operator << for Line class. It uses the ToString() method to get the string representation of the line and outputs it to the provided ostream.
+ostream& operator << (ostream& os, const Line& l) {
+	os << l.ToString();
+	return os;
 }
 
 // Getter for p_start 
@@ -48,9 +63,11 @@ Delegation use cases:
 - ToString: we use the toString function from the Point class to get the coordinates of each point.
 - Length: delegates the calculation to Point::Distance().
 */
-string Line::ToString() const{
+string Line::ToString() const {
+    string s = Shape::ToString();
     stringstream ss;
-    ss  << "Line starts at: " 
+    ss << s
+        << " & Line starts at: "
         << p_start.ToString()
         << " and ends at: "
         << p_end.ToString();
@@ -61,4 +78,8 @@ double Line::Length() const {
 	return p_end.Distance(p_start);
 }
 
+// Draw Function: 
+void Line::Draw() {
+    cout << "A line ----- " << endl;
+}
 
