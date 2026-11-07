@@ -11,13 +11,17 @@ using namespace std;
 /*
     Constructors and destructors: 
 */
+
 template <class T>
-Array<T>::Array(): m_size(10){
+unsigned int Array<T>::DEFAULT_SIZE = 10; // default size of the array.
+
+template <class T>
+Array<T>::Array(): m_size(DEFAULT_SIZE){
     m_data = new T[m_size];
 }
 
 template <class T>
-Array<T>::Array(int size):m_size(size){
+Array<T>::Array(unsigned int size):m_size(size){
     m_data = new T[m_size];
 }
 
@@ -25,7 +29,7 @@ template <class T>
 Array<T>::Array(const Array<T>& arr){
     m_size = arr.m_size;
     m_data = new T[arr.m_size];
-    for(int i = 0; i<arr.m_size; i++){
+    for(unsigned int i = 0; i<arr.m_size; i++){
         m_data[i] = arr.m_data[i];
     }
 }
@@ -65,7 +69,7 @@ Array<T>& Array<T>::operator=(const Array<T>& source){
     Getters 
 */
 template <class T>
-int Array<T>::Size() const{
+unsigned int Array<T>::Size() const{
     // Size getter
     return m_size;
 }
@@ -88,6 +92,21 @@ void Array<T>::SetElement(int index, const T& p){
     }
     m_data[index] = p;
 }
+
+/*
+    Static getter / setter:
+*/
+
+template <class T>
+unsigned int Array<T>::DefaultSize() {
+    return DEFAULT_SIZE;
+}
+
+template <class T>
+void Array<T>::DefaultSize(unsigned int size) {
+    DEFAULT_SIZE = size;
+}
+
 
 /*
     [] Operator overload. 
